@@ -1,0 +1,42 @@
+<div class="favorite-properties-container">
+   
+      <!-- Header / Navigation Bar -->
+      <header>
+        <div class="logo">Your Favorites Listings</div>
+        <nav>
+          <a href="/dashboard">Home</a>
+        </nav>
+      </header>
+    <!-- Loading indicator -->
+    <div *ngIf="isLoading">Loading your favorites...</div>
+  
+    <!-- No favorites message -->
+    <div *ngIf="!isLoading && favoritesDetails.length === 0">
+      <p>No favorite properties found.</p>
+    </div>
+    
+    <!-- Display properties in cards -->
+    <div *ngIf="!isLoading && favoritesDetails.length > 0">
+      <div class="property-card" *ngFor="let property of favoritesDetails">
+        <!-- Check if imageUrls is defined and has at least one image -->
+        <img *ngIf="property.imageUrls && property.imageUrls.length > 0" 
+             [src]="property.imageUrls[0]" 
+             alt="Property Image" 
+             class="property-image" />
+  
+        <!-- Placeholder image if no imageUrls are available -->
+        <img *ngIf="!property.imageUrls || property.imageUrls.length === 0" 
+             src="path/to/placeholder-image.jpg" 
+             alt="No Image Available" 
+             class="property-image" />
+  
+        <div class="property-details">
+          <h3>{{ property.apartmentName }}</h3>
+          <p>{{ property.description?.title }}</p>
+          <p><strong>Location:</strong> {{ property.location }}</p>
+          <p><strong>Rent:</strong> {{ property.expectedRent | currency }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

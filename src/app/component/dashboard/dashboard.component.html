@@ -1,0 +1,72 @@
+<div class="property-listings-container">
+
+    <!-- Header / Navigation Bar -->
+    <header>
+      <div class="logo">Property Listings</div>
+      <nav>
+        <a href="/dashboard">Home</a>
+        <a href="/favourites">Favorites</a>
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </nav>
+    </header>
+  
+    <!-- Carousel Section -->
+    <section class="carousel">
+      <div class="carousel-item">Featured Listing 1</div>
+      <div class="carousel-item">Featured Listing 2</div>
+      <div class="carousel-item">Featured Listing 3</div>
+    </section>
+  
+    <!-- Listings Section -->
+    <section class="listing-section">
+      <div *ngIf="properties.length > 0; else loading">
+        <div *ngFor="let property of properties | slice:pageIndex*pageSize:(pageIndex+1)*pageSize" class="listing-card">
+          <!-- Placeholder for Property Image -->
+          <img [src]="property.postID + '.jpg'" alt="Property Image" class="image-placeholder">
+          
+          <div class="listing-info">
+            <!-- Apartment type and title -->
+            <h3>{{ property.apartmentType }}</h3>
+            
+            <!-- Location -->
+            <p>{{ property.location }}</p>
+            
+            <!-- Price -->
+            <span class="price">{{ property.price | currency }}</span>
+            
+            <!-- Additional details -->
+            <p><strong>Lease Type:</strong> {{ property.leaseType }}</p>
+            <p><strong>Furnished:</strong> {{ property.furnished }}</p>
+            <p><strong>Shared Property:</strong> {{ property.sharedProperty }}</p>
+      
+            <!-- Quick Action Buttons -->
+            <div class="actions">
+            <button class="view-details" (click)="viewDetails(property.postID)">
+              View Details
+            </button>
+            <button class="favorite" (click)="toggleFavorite(property.postID)">
+              ❤️
+              <span *ngIf="favoriteProperties.includes(property.id)">&#x2764;</span>
+              <span *ngIf="!favoriteProperties.includes(property.id)">&#x2661;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+      <ng-template #loading>
+        <p>Loading properties...</p>
+      </ng-template>
+    </section>
+  
+    <!-- Pagination Controls -->
+    <mat-paginator
+      [length]="properties.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[1,2,3]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  
+  </div>
+  

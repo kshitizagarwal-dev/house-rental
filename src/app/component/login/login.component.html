@@ -1,0 +1,42 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <!-- Email Field -->
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [ngClass]="{'is-invalid': email?.invalid && email?.touched}"
+      />
+      <div *ngIf="email?.invalid && email?.touched" class="error">
+        <small *ngIf="email?.errors?.['required']">Email is required.</small>
+        <small *ngIf="email?.errors?.['email']">Please enter a valid email.</small>
+      </div>
+  
+      <!-- Password Field with Show Password Toggle -->
+      <label for="password">Password:</label>
+      <div class="password-container">
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          [ngClass]="{'is-invalid': password?.invalid && password?.touched}"
+        />
+        <button type="button" class="show-password" (click)="toggleShowPassword()">
+          {{ showPassword ? 'Hide' : 'Show' }}
+        </button>
+      </div>
+      <div *ngIf="password?.invalid && password?.touched" class="error">
+        <small *ngIf="password?.errors?.['required']">Password is required.</small>
+        <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters.</small>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  
+      <!-- Error Message Display -->
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    </form>
+  </div>
+  

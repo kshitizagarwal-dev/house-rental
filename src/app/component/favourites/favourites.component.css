@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header / Navigation */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  header .logo {
+    font-size: 1.5em;
+  }
+  
+  header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  header nav a:hover {
+    text-decoration: underline;
+  }
+  
+.favorite-properties-container {
+    margin: 20px;
+  }
+  
+  .property-card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  .property-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .property-details h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .property-details p {
+    font-size: 14px;
+    color: #555;
+  }
+  

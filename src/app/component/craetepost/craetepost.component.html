@@ -1,0 +1,82 @@
+<form [formGroup]="propertyForm" (ngSubmit)="submitForm()">
+    <h2>Create New Property Post</h2>
+  
+    <!-- Apartment Details -->
+    <label>Apartment/Building Name</label>
+    <input type="text" formControlName="apartmentName" placeholder="Enter the name of your apartment/building" />
+  
+    <label>Type of Apartment</label>
+    <input type="text" formControlName="apartmentType" placeholder="Enter the apartment type" />
+  
+    <label>Is this a shared property?</label>
+    <div class="radio-group">
+      <label><input type="radio" formControlName="sharedProperty" value="Yes" /> Yes</label>
+      <label><input type="radio" formControlName="sharedProperty" value="No" /> No</label>
+    </div>
+  
+    <label>Location</label>
+    <input type="text" formControlName="location" placeholder="Enter street address" />
+  
+    <!-- Property Details -->
+    <h3>Property Details</h3>
+    <label>Square Feet</label>
+    <input type="number" formControlName="squareFeet" placeholder="Enter area in square feet" />
+  
+    <label>Stay/Lease Type</label>
+    <div class="radio-group">
+      <label><input type="radio" formControlName="leaseType" value="Long term" /> Long term (6+ months)</label>
+      <label><input type="radio" formControlName="leaseType" value="Short term" /> Short term</label>
+    </div>
+  
+    <label>Expected Rent</label>
+    <input type="number" formControlName="expectedRent" placeholder="Enter expected rent" />
+  
+    <label>Price Mode</label>
+    <div class="radio-group">
+      <label><input type="radio" formControlName="priceMode" value="Per Month" /> Per Month</label>
+      <label><input type="radio" formControlName="priceMode" value="One-time" /> One-time</label>
+    </div>
+  
+    <!-- Furnished and Amenities -->
+    <h3>Amenities and Furnishing</h3>
+    <label>Is the property furnished?</label>
+    <div class="radio-group">
+      <label><input type="radio" formControlName="furnished" value="Yes" /> Yes</label>
+      <label><input type="radio" formControlName="furnished" value="No" /> No</label>
+    </div>
+    <div formGroupName="amenities" class="checkbox-group">
+        <label><input type="checkbox" formControlName="gym" /> Gym</label>
+        <label><input type="checkbox" formControlName="swimmingPool" /> Swimming Pool</label>
+        <label><input type="checkbox" formControlName="carPark" /> Car Park</label>
+        <label><input type="checkbox" formControlName="visitorsParking" /> Visitors Parking</label>
+        <label><input type="checkbox" formControlName="powerBackup" /> Power Backup</label>
+        <label><input type="checkbox" formControlName="garbageDisposal" /> Garbage Disposal</label>
+        <label><input type="checkbox" formControlName="privateLawn" /> Private Lawn</label>
+        <label><input type="checkbox" formControlName="waterHeater" /> Water Heater</label>
+        <label><input type="checkbox" formControlName="plantSecurity" /> Plant Security</label>
+        <label><input type="checkbox" formControlName="laundryService" /> Laundry Service</label>
+        <label><input type="checkbox" formControlName="elevator" /> Elevator</label>
+        <label><input type="checkbox" formControlName="clubHouse" /> Club House</label>
+      </div>
+  
+    <!-- Description -->
+    <h3>Description</h3>
+    <div formGroupName="description">
+      <label>Title</label>
+      <input type="text" formControlName="title" placeholder="Enter a title" />
+  
+      <label>Description (500 words)</label>
+      <textarea formControlName="text" placeholder="Enter description"></textarea>
+    </div>
+  
+    <!-- Image Upload -->
+    <h3>Upload Property Images</h3>
+    <input type="file" (change)="uploadImage($event)" accept="image/*" multiple />
+    <div *ngIf="uploadingImage">Uploading image...</div>
+    <div *ngFor="let imageUrl of imageUrls">
+      <img [src]="imageUrl" alt="Property Image" width="200" />
+    </div>
+  
+    <button type="submit" [disabled]="!propertyForm.valid">Submit</button>
+  </form>
+  
