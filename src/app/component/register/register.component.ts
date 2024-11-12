@@ -18,8 +18,9 @@ export class RegisterComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
+  showPassword: boolean = false;
 
-  private firestore = inject(Firestore);
+ private firestore = inject(Firestore);
   constructor(private afAuth: Auth, private router : Router) {}
 
   async register() {
@@ -53,6 +54,11 @@ export class RegisterComponent {
       }
     }
   }
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
 }   
 
 

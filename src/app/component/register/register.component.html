@@ -1,43 +1,68 @@
-<div class="registration-container">
-    <h2>Register</h2>
-    <form [formGroup]="registrationForm" (ngSubmit)="register()">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" formControlName="name" />
-        <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
-          <small class="error-message">Name is required.</small>
+<div class="registration-container d-flex justify-content-center align-items-center">
+  <div class="card registration-card">
+    <div class="card-body">
+      <h2 class="card-title text-center">Register</h2>
+      <form [formGroup]="registrationForm" (ngSubmit)="register()">
+        
+        <!-- Name input -->
+        <div class="form-group mb-3">
+          <label for="name" class="form-label">Name:</label>
+          <input type="text" id="name" formControlName="name" class="form-control" />
+          <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+            <small class="text-danger">Name is required.</small>
+          </div>
         </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" formControlName="email" />
-        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
-          <small class="error-message" *ngIf="registrationForm.get('email')?.errors?.['required']">
-            Email is required.
-          </small>
-          <small class="error-message" *ngIf="registrationForm.get('email')?.errors?.['email']">
-            Enter a valid email.
-          </small>
+
+        <!-- Email input -->
+        <div class="form-group mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" id="email" formControlName="email" class="form-control" />
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+            <small class="text-danger" *ngIf="registrationForm.get('email')?.errors?.['required']">
+              Email is required.
+            </small>
+            <small class="text-danger" *ngIf="registrationForm.get('email')?.errors?.['email']">
+              Enter a valid email.
+            </small>
+          </div>
         </div>
-      </div>
-  
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" formControlName="password" />
-        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
-          <small class="error-message" *ngIf="registrationForm.get('password')?.errors?.['required']">
-            Password is required.
-          </small>
-          <small class="error-message" *ngIf="registrationForm.get('password')?.errors?.['minlength']">
-            Password must be at least 6 characters.
-          </small>
+
+        <!-- Password input with Show Password button -->
+        <div class="form-group mb-3">
+          <label for="password" class="form-label">Password:</label>
+          <div class="password-container">
+            <input 
+              [type]="showPassword ? 'text' : 'password'" 
+              id="password" 
+              formControlName="password" 
+              class="form-control" 
+            />
+            <button 
+              type="button" 
+              class="show-password-btn"
+              (click)="togglePasswordVisibility()"
+            >
+              {{ showPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+          <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+            <small class="text-danger" *ngIf="registrationForm.get('password')?.errors?.['required']">
+              Password is required.
+            </small>
+            <small class="text-danger" *ngIf="registrationForm.get('password')?.errors?.['minlength']">
+              Password must be at least 6 characters.
+            </small>
+          </div>
         </div>
-      </div>
-  
-      <button type="submit" [disabled]="registrationForm.invalid" class="register-button">
-        Register
-      </button>
-    </form>
+
+        <!-- Register button and Back to Login link -->
+        <div class="d-flex justify-content-between align-items-center">
+          <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary">
+            Register
+          </button>
+          <a href="/login" class="back-to-login-link">Back to Login</a>
+        </div>
+      </form>
+    </div>
   </div>
-  
+</div>

@@ -17,7 +17,7 @@ import { Auth } from '@angular/fire/auth';
 export class DashboardComponent {
   properties: any[] = [];
   imageUrls: { [key: string]: string } = {};
-  pageSize = 5;
+  pageSize = 2;
   pageIndex = 0;
   selectedSort: string = 'price';
   favoriteProperties: string[] = [];

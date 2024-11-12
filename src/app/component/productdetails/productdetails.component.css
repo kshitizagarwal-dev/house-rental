@@ -1,37 +1,130 @@
+/* General styling for the property details container */
 .property-details-container {
-    width: 80%;
-    margin: 0 auto;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  h3 {
-    color: #2c3e50;
-  }
+/* Header styling */
+header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+}
 
-  p {
-    font-size: 1.2rem;
-    color: #34495e;
-  }
+header h2.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 
-  .apartment-details, .property-details, .furnishing-amenities, .description {
-    margin-bottom: 20px;
+header nav .nav-link {
+  color: #ffffff;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+header nav .nav-link:hover {
+  color: #adb5bd;
+  text-decoration: none;
+}
+
+/* Image display section styling */
+.image-display h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.image-display img {
+  max-height: 400px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Section headers */
+.apartment-details h3,
+.property-details h3,
+.furnishing-amenities h3,
+.description h3,
+.comments h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #6c757d;
+  padding-bottom: 5px;
+}
+
+/* Details and description sections */
+.apartment-details p,
+.property-details p,
+.description p {
+  font-size: 1rem;
+  color: #343a40;
+  margin-bottom: 5px;
+}
+
+/* Amenities list styling */
+.furnishing-amenities ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.furnishing-amenities li {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+
+/* Comments section */
+.comments .comments-display {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.comments-display p {
+  font-size: 0.95rem;
+  color: #495057;
+}
+
+.comments-display hr {
+  margin: 10px 0;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Comment form */
+.comment-form label {
+  font-weight: 600;
+  color: #495057;
+}
+
+.comment-form textarea {
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+.comment-form button {
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .property-details-container {
     padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
   }
 
-  .image-display {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
+  .header nav .nav-link {
+    margin-left: 10px;
   }
 
-  .property-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  .image-display img {
+    max-height: 250px;
   }
+}

@@ -1,85 +1,90 @@
-<div class="property-details-container">
-    <h2>Property Details</h2>
-      <!-- Header / Navigation Bar -->
-      <header>
-        <div class="logo">Property Listings</div>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Favorites</a>
-          <a href="#">My Account</a>
-          <a href="#">Help</a>
-        </nav>
-      </header>
-    <!-- Image Display Section (Now at the Top) -->
-    <section class="image-display">
-      <h3>Property Images</h3>
-      <div>
-  <img [src]="propertyId + '.jpg'" alt="Property Image" class="image-placeholder">
-      </div>
-    </section>
-  
+<div class="property-details-container container mt-4">
+  <!-- Header / Navigation Bar -->
+  <header class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
+    <h2 class="logo">Property Listings</h2>
+    <nav class="nav">
+      <a href="#" class="nav-link">Home</a>
+      <a href="#" class="nav-link">Favorites</a>
+      <a href="#" class="nav-link">My Account</a>
+      <a href="#" class="nav-link">Help</a>
+    </nav>
+  </header>
+
+  <!-- Image Display Section -->
+  <section class="image-display text-center mb-4">
+    <h3 class="mb-3">Property Images</h3>
+    <div>
+      <img [src]="'716269.jpg'" alt="Property Image" class="img-fluid rounded shadow-sm" style="max-width: 100%; height: auto; max-height: 400px;">
+    </div>
+  </section>
+
+  <div class="row">
     <!-- Apartment Details Section -->
-    <section class="apartment-details">
+    <section class="apartment-details col-md-6 mb-4">
       <h3>Apartment Details</h3>
       <p><strong>Apartment Name:</strong> {{ property.apartmentName }}</p>
       <p><strong>Apartment Type:</strong> {{ property.apartmentType }}</p>
       <p><strong>Shared Property:</strong> {{ property.sharedProperty }}</p>
       <p><strong>Location:</strong> {{ property.location }}</p>
     </section>
-  
+
     <!-- Property Details Section -->
-    <section class="property-details">
+    <section class="property-details col-md-6 mb-4">
       <h3>Property Details</h3>
       <p><strong>Square Feet:</strong> {{ property.squareFeet }} sq ft</p>
       <p><strong>Lease Type:</strong> {{ property.leaseType }}</p>
       <p><strong>Expected Rent:</strong> {{ property.expectedRent | currency }}</p>
       <p><strong>Price Mode:</strong> {{ property.priceMode }}</p>
     </section>
-  
-    <!-- Furnishing and Amenities Section -->
-    <section class="furnishing-amenities">
-      <h3>Amenities and Furnishing</h3>
-      <p><strong>Is the Property Furnished?</strong> {{ property.furnished }}</p>
-      <p><strong>Amenities:</strong></p>
-      <ul>
-        <li *ngIf="property.amenities.gym">Gym</li>
-        <li *ngIf="property.amenities.swimmingPool">Swimming Pool</li>
-        <li *ngIf="property.amenities.carPark">Car Park</li>
-        <li *ngIf="property.amenities.visitorsParking">Visitors Parking</li>
-        <li *ngIf="property.amenities.powerBackup">Power Backup</li>
-        <li *ngIf="property.amenities.garbageDisposal">Garbage Disposal</li>
-        <li *ngIf="property.amenities.privateLawn">Private Lawn</li>
-        <li *ngIf="property.amenities.waterHeater">Water Heater</li>
-        <li *ngIf="property.amenities.plantSecurity">Plant Security</li>
-        <li *ngIf="property.amenities.laundryService">Laundry Service</li>
-        <li *ngIf="property.amenities.elevator">Elevator</li>
-        <li *ngIf="property.amenities.clubHouse">Club House</li>
-      </ul>
-    </section>
-  
-    <!-- Description Section -->
-    <section class="description">
-      <h3>Description</h3>
-      <p><strong>Title:</strong> {{ property.description.title }}</p>
-      <p><strong>Description:</strong> {{ property.description.text }}</p>
-    </section>
-    <section class="comments">
-        <h3>User Comments</h3>
-    
-        <!-- Scrollable Comments Display -->
-        <div class="comments-display" style="max-height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
-            <div *ngFor="let comment of property.comments">
-              <p>{{ comment }}</p>
-              <hr />
-            </div>
-          </div>
-          
-    
-        <!-- Add a Comment Form -->
-        <form (ngSubmit)="addComment()" class="comment-form">
-          <label for="commentText">Add a Comment:</label>
-          <textarea id="commentText" [(ngModel)]="newComment.text" name="commentText" rows="3" placeholder="Write your comment..." required></textarea>
-          <button type="submit" [disabled]="!newComment.text">Submit Comment</button>
-        </form>
-      </section>
+  </div>
+
+  <!-- Furnishing and Amenities Section -->
+  <section class="furnishing-amenities mb-4">
+    <h3>Amenities and Furnishing</h3>
+    <p><strong>Is the Property Furnished?</strong> {{ property.furnished }}</p>
+    <p><strong>Amenities:</strong></p>
+    <ul class="list-unstyled row">
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.gym">Gym</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.swimmingPool">Swimming Pool</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.carPark">Car Park</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.visitorsParking">Visitors Parking</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.powerBackup">Power Backup</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.garbageDisposal">Garbage Disposal</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.privateLawn">Private Lawn</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.waterHeater">Water Heater</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.plantSecurity">Plant Security</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.laundryService">Laundry Service</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.elevator">Elevator</li>
+      <li class="col-md-4 mb-2" *ngIf="property.amenities.clubHouse">Club House</li>
+    </ul>
+  </section>
+
+  <!-- Description Section -->
+  <section class="description mb-4">
+    <h3>Description</h3>
+    <p><strong>Title:</strong> {{ property.description.title }}</p>
+    <p><strong>Description:</strong> {{ property.description.text }}</p>
+  </section>
+
+  <!-- User Comments Section -->
+  <section class="comments mb-4">
+    <h3>User Comments</h3>
+
+    <!-- Scrollable Comments Display -->
+    <div class="comments-display p-3 border rounded" style="max-height: 300px; overflow-y: auto;">
+      <div *ngFor="let comment of property.comments">
+        <p>{{ comment }}</p>
+        <hr />
+      </div>
+    </div>
+
+    <!-- Add a Comment Form -->
+    <form (ngSubmit)="addComment()" class="comment-form mt-3">
+      <div class="mb-3">
+        <label for="commentText" class="form-label">Add a Comment:</label>
+        <textarea id="commentText" [(ngModel)]="newComment.text" name="commentText" rows="3" class="form-control" placeholder="Write your comment..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!newComment.text">Submit Comment</button>
+    </form>
+  </section>
 </div>

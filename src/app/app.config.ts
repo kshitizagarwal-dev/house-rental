@@ -11,5 +11,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
-     provideFirebaseApp(() => initializeApp({"projectId":"login-dummypage","appId":"1:94900849917:web:0503da0c16d3abb2e1c294","storageBucket":"login-dummypage.firebasestorage.app","apiKey":"AIzaSyCsWlM_RBrtJZBBCzk6EI5dsWu_iwTCqbg","authDomain":"login-dummypage.firebaseapp.com","messagingSenderId":"94900849917"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()),provideStorage(() => getStorage()), provideAnimationsAsync()]
+     provideFirebaseApp(() => initializeApp({"projectId":"login-dummypage","appId":"1:94900849917:web:0503da0c16d3abb2e1c294","storageBucket":"login-dummypage.firebasestorage.app","apiKey":"AIzaSyCsWlM_RBrtJZBBCzk6EI5dsWu_iwTCqbg","authDomain":"login-dummypage.firebaseapp.com","messagingSenderId":"94900849917"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()),provideStorage(() => getStorage()), provideAnimationsAsync(), provideAnimationsAsync()]
 };

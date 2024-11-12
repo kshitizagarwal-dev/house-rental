@@ -14,5 +14,5 @@ import { RegisterComponent } from './component/register/register.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'rental-hub';
+
 }

@@ -4,12 +4,16 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ref, Storage, uploadBytesResumable } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { Router } from '@angular/router';
+import { PreviewComponent } from '../preview/preview.component';
+
 
 
 @Component({
   selector: 'app-craetepost',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,PreviewComponent],
   templateUrl: './craetepost.component.html',
   styleUrl: './craetepost.component.css'
 })
@@ -19,9 +23,10 @@ export class CraetepostComponent {
     imageFiles: File[] = [];
     imageUrls: string[] = [];
     uploadingImage : boolean = false;
+    showPreview : boolean = false;
 
   
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private router: Router) {
       this.propertyForm = this.fb.group({
         apartmentName: ['', Validators.required],
         apartmentType: ['', Validators.required],
@@ -60,20 +65,6 @@ export class CraetepostComponent {
       return Math.floor(100000 + Math.random() * 900000); // Random 6-digit ID
     }
   
-    // uploadImage(event: any) {
-    //   const files = event.target.files;
-    //   if (files) {
-    //     this.uploadingImage = true;
-    //     Array.from(files).forEach((file: any) => {
-    //       const reader = new FileReader();
-    //       reader.onload = (e: any) => {
-    //         this.imageUrls.push(e.target.result); // Store base64 string
-    //       };
-    //       reader.readAsDataURL(file); // Convert image to base64 format
-    //     });
-    //     this.uploadingImage = false;
-    //   }
-    // }
 
     uploadImage(event: Event): void {
       const fileInput = event.target as HTMLInputElement;
@@ -105,8 +96,10 @@ export class CraetepostComponent {
   //   });
   // }
   
-    submitForm() {
+    submitForm(): void {
+      console.log(this.propertyForm.valid);
       if (this.propertyForm.valid) {
+        console.log("inwie4 submit form");
         const postID = this.generateRandomPostId();
         setDoc(doc(this.firestore, 'properties', postID.toString()), {
           ...this.propertyForm.value,
@@ -115,12 +108,19 @@ export class CraetepostComponent {
         .then((docRef)=>{
           console.log("Data save properly",);
           this.propertyForm.reset();
+          this.router.navigate(['/dashboard']);
+          this.showPreview = false;
         }, error=>{
           alert("Some issue occured. Plz try again later");
         })
       } else {
-        alert('Please fill all required fields correctly.');
+        this.showPreview = false;
+        
       }
+    }
+ 
+    togglePreview(): void {
+      this.showPreview = !this.showPreview;
     }
   }
   

@@ -1,82 +1,121 @@
-<form [formGroup]="propertyForm" (ngSubmit)="submitForm()">
-    <h2>Create New Property Post</h2>
-  
-    <!-- Apartment Details -->
-    <label>Apartment/Building Name</label>
-    <input type="text" formControlName="apartmentName" placeholder="Enter the name of your apartment/building" />
-  
-    <label>Type of Apartment</label>
-    <input type="text" formControlName="apartmentType" placeholder="Enter the apartment type" />
-  
+<form [formGroup]="propertyForm" (ngSubmit)="submitForm()" class="container mt-4">
+  <h2 class="mb-4">Create New Property Post</h2>
+
+  <!-- Apartment Details -->
+  <div class="form-group mb-3">
+    <label for="apartmentName">Apartment/Building Name</label>
+    <input type="text" id="apartmentName" class="form-control" formControlName="apartmentName" placeholder="Enter the name of your apartment/building" />
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="apartmentType">Type of Apartment</label>
+    <input type="text" id="apartmentType" class="form-control" formControlName="apartmentType" placeholder="Enter the apartment type" />
+  </div>
+
+  <div class="form-group mb-3">
     <label>Is this a shared property?</label>
-    <div class="radio-group">
-      <label><input type="radio" formControlName="sharedProperty" value="Yes" /> Yes</label>
-      <label><input type="radio" formControlName="sharedProperty" value="No" /> No</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="sharedProperty" value="Yes" id="sharedYes" />
+      <label class="form-check-label" for="sharedYes">Yes</label>
     </div>
-  
-    <label>Location</label>
-    <input type="text" formControlName="location" placeholder="Enter street address" />
-  
-    <!-- Property Details -->
-    <h3>Property Details</h3>
-    <label>Square Feet</label>
-    <input type="number" formControlName="squareFeet" placeholder="Enter area in square feet" />
-  
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="sharedProperty" value="No" id="sharedNo" />
+      <label class="form-check-label" for="sharedNo">No</label>
+    </div>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="location">Location</label>
+    <input type="text" id="location" class="form-control" formControlName="location" placeholder="Enter street address" />
+  </div>
+
+ 
+  <div class="form-group mb-3">
+    <label for="squareFeet">Square Feet</label>
+    <input type="number" id="squareFeet" class="form-control" formControlName="squareFeet" placeholder="Enter area in square feet" />
+  </div>
+
+  <div class="form-group mb-3">
     <label>Stay/Lease Type</label>
-    <div class="radio-group">
-      <label><input type="radio" formControlName="leaseType" value="Long term" /> Long term (6+ months)</label>
-      <label><input type="radio" formControlName="leaseType" value="Short term" /> Short term</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="leaseType" value="Long term" id="leaseLong" />
+      <label class="form-check-label" for="leaseLong">Long term (6+ months)</label>
     </div>
-  
-    <label>Expected Rent</label>
-    <input type="number" formControlName="expectedRent" placeholder="Enter expected rent" />
-  
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="leaseType" value="Short term" id="leaseShort" />
+      <label class="form-check-label" for="leaseShort">Short term</label>
+    </div>
+  </div>
+
+  <div class="form-group mb-3">
+    <label for="expectedRent">Expected Rent</label>
+    <input type="number" id="expectedRent" class="form-control" formControlName="expectedRent" placeholder="Enter expected rent" />
+  </div>
+
+  <div class="form-group mb-3">
     <label>Price Mode</label>
-    <div class="radio-group">
-      <label><input type="radio" formControlName="priceMode" value="Per Month" /> Per Month</label>
-      <label><input type="radio" formControlName="priceMode" value="One-time" /> One-time</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="priceMode" value="Per Month" id="pricePerMonth" />
+      <label class="form-check-label" for="pricePerMonth">Per Month</label>
     </div>
-  
-    <!-- Furnished and Amenities -->
-    <h3>Amenities and Furnishing</h3>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="priceMode" value="One-time" id="priceOneTime" />
+      <label class="form-check-label" for="priceOneTime">One-time</label>
+    </div>
+  </div>
+
+  <!-- Furnished and Amenities -->
+
+  <div class="form-group mb-3">
     <label>Is the property furnished?</label>
-    <div class="radio-group">
-      <label><input type="radio" formControlName="furnished" value="Yes" /> Yes</label>
-      <label><input type="radio" formControlName="furnished" value="No" /> No</label>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="furnished" value="Yes" id="furnishedYes" />
+      <label class="form-check-label" for="furnishedYes">Yes</label>
     </div>
-    <div formGroupName="amenities" class="checkbox-group">
-        <label><input type="checkbox" formControlName="gym" /> Gym</label>
-        <label><input type="checkbox" formControlName="swimmingPool" /> Swimming Pool</label>
-        <label><input type="checkbox" formControlName="carPark" /> Car Park</label>
-        <label><input type="checkbox" formControlName="visitorsParking" /> Visitors Parking</label>
-        <label><input type="checkbox" formControlName="powerBackup" /> Power Backup</label>
-        <label><input type="checkbox" formControlName="garbageDisposal" /> Garbage Disposal</label>
-        <label><input type="checkbox" formControlName="privateLawn" /> Private Lawn</label>
-        <label><input type="checkbox" formControlName="waterHeater" /> Water Heater</label>
-        <label><input type="checkbox" formControlName="plantSecurity" /> Plant Security</label>
-        <label><input type="checkbox" formControlName="laundryService" /> Laundry Service</label>
-        <label><input type="checkbox" formControlName="elevator" /> Elevator</label>
-        <label><input type="checkbox" formControlName="clubHouse" /> Club House</label>
-      </div>
-  
-    <!-- Description -->
-    <h3>Description</h3>
-    <div formGroupName="description">
-      <label>Title</label>
-      <input type="text" formControlName="title" placeholder="Enter a title" />
-  
-      <label>Description (500 words)</label>
-      <textarea formControlName="text" placeholder="Enter description"></textarea>
+    <div class="form-check">
+      <input type="radio" class="form-check-input" formControlName="furnished" value="No" id="furnishedNo" />
+      <label class="form-check-label" for="furnishedNo">No</label>
     </div>
-  
-    <!-- Image Upload -->
-    <h3>Upload Property Images</h3>
-    <input type="file" (change)="uploadImage($event)" accept="image/*" multiple />
-    <div *ngIf="uploadingImage">Uploading image...</div>
-    <div *ngFor="let imageUrl of imageUrls">
-      <img [src]="imageUrl" alt="Property Image" width="200" />
+  </div>
+  <div formGroupName="amenities" class="checkbox-group">
+    <label><input type="checkbox" formControlName="gym" /> Gym</label>
+    <label><input type="checkbox" formControlName="swimmingPool" /> Swimming Pool</label>
+    <label><input type="checkbox" formControlName="carPark" /> Car Park</label>
+    <label><input type="checkbox" formControlName="visitorsParking" /> Visitors Parking</label>
+    <label><input type="checkbox" formControlName="powerBackup" /> Power Backup</label>
+    <label><input type="checkbox" formControlName="garbageDisposal" /> Garbage Disposal</label>
+    <label><input type="checkbox" formControlName="privateLawn" /> Private Lawn</label>
+    <label><input type="checkbox" formControlName="waterHeater" /> Water Heater</label>
+    <label><input type="checkbox" formControlName="plantSecurity" /> Plant Security</label>
+    <label><input type="checkbox" formControlName="laundryService" /> Laundry Service</label>
+    <label><input type="checkbox" formControlName="elevator" /> Elevator</label>
+    <label><input type="checkbox" formControlName="clubHouse" /> Club House</label>
+  </div>
+
+
+  <!-- Description -->
+
+  <div formGroupName="description" class="form-group mb-4">
+    <label for="title">Title</label>
+    <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter a title" />
+
+    <label for="descriptionText">Description (500 words)</label>
+    <textarea id="descriptionText" class="form-control" formControlName="text" placeholder="Enter description"></textarea>
+  </div>
+
+  <!-- Image Upload -->
+
+  <div class="form-group mb-3">
+    <input type="file" class="form-control" (change)="uploadImage($event)" accept="image/*" multiple />
+    <div *ngIf="uploadingImage" class="text-info">Uploading image...</div>
+    <div class="mt-3">
+      <img *ngFor="let imageUrl of imageUrls" [src]="imageUrl" alt="Property Image" class="img-thumbnail m-1" width="200" />
     </div>
-  
-    <button type="submit" [disabled]="!propertyForm.valid">Submit</button>
-  </form>
-  
+  </div>
+  <button type="button" class="btn btn-primary"  (click)="togglePreview()">Preview</button>
+ 
+</form>
+
+<div *ngIf="showPreview" class="preview-overlay">
+  <app-preview [previewData]="propertyForm.value" (submitPreview)="submitForm()"></app-preview>
+</div>

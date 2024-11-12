@@ -1,70 +1,45 @@
 .registration-container {
-max-width: 400px;
-margin: 0 auto;
-padding: 2rem;
-border: 1px solid #ddd;
-border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-background-color: #f9f9f9;
-font-family: Arial, sans-serif;
-}
-
-h2 {
-text-align: center;
-color: #333;
-}
-
-.form-group {
-margin-bottom: 1rem;
-}
-
-label {
-font-weight: bold;
-display: block;
-margin-bottom: 0.5rem;
-color: #555;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-width: 100%;
-padding: 0.75rem;
-border: 1px solid #ccc;
-border-radius: 4px;
-font-size: 1rem;
-box-sizing: border-box;
-}
-
-input:focus {
-outline: none;
-border-color: #007bff;
-}
-
-.error-message {
-color: #e74c3c;
-font-size: 0.875rem;
-margin-top: 0.25rem;
-}
-
-.register-button {
-width: 100%;
-padding: 0.75rem;
-font-size: 1rem;
-font-weight: bold;
-color: #fff;
-background-color: #007bff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s ease;
-}
-
-.register-button:disabled {
-background-color: #cccccc;
-cursor: not-allowed;
-}
-
-.register-button:hover:not(:disabled) {
-background-color: #0056b3;
-}
+    height: 100vh;
+  }
+  
+  .registration-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+  }
+  
+  .password-container {
+    position: relative;
+  }
+  
+  .show-password-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 0.9rem;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .show-password-btn:hover {
+    color: #0056b3;
+  }
+  
+  .form-control {
+    padding-right: 60px; /* Adds space for the button inside the input */
+  }
+  
+  .back-to-login-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .back-to-login-link:hover {
+    text-decoration: underline;
+  }
+  

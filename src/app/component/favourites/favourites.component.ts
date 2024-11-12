@@ -70,11 +70,15 @@ export class FavouritesComponent implements OnInit {
         return;
       }
     });
-
- 
-    
-    
     
   }
+  getPropertyImage(postID: string): string {
+    return `${postID}.jpg`; // Customize the path as needed
+  }
 
+  viewDetailsRedirect(postID : string){
+    console.log('property is ', postID);
+
+    this.router.navigate([`property-details/${postID}`]);
+  }
 }

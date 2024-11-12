@@ -1,0 +1,69 @@
+<!-- preview.component.html
+<div class="preview-container">
+    <h3>Preview Property Details</h3>
+    <div class="property-details">
+        <button class="close-btn" (click)="closePreview.emit()">&#x2715;</button>
+      <p><strong>Apartment Name:</strong> {{ previewData?.apartmentName }}</p>
+      <p><strong>Type:</strong> {{ previewData?.apartmentType }}</p>
+      <p><strong>Location:</strong> {{ previewData?.location }}</p>
+      <p><strong>Square Feet:</strong> {{ previewData?.squareFeet }}</p>
+      <p><strong>Lease Type:</strong> {{ previewData?.leaseType }}</p>
+      <p><strong>Expected Rent:</strong> {{ previewData?.expectedRent | currency }}</p>
+      <p><strong>Furnished:</strong> {{ previewData?.furnished }}</p>
+      <p><strong>Description:</strong> {{ previewData?.description?.text }}</p>
+    </div>
+  
+    <h4>Amenities</h4>
+    <ul>
+      <li *ngIf="previewData?.amenities?.gym">Gym</li>
+      <li *ngIf="previewData?.amenities?.swimmingPool">Swimming Pool</li>
+      <li *ngIf="previewData?.amenities?.carPark">CarParking Pool</li>
+      <li *ngIf="previewData?.amenities?.visitorsParking">Visitors Parking</li>
+      <li *ngIf="previewData?.amenities?.powerBackup">Power Backup</li>
+      <li *ngIf="previewData?.amenities?.garbageDisposal">Garbage Disposal</li>
+      <li *ngIf="previewData?.amenities?.privateLawn">Private Lawn</li>
+      <li *ngIf="previewData?.amenities?.waterHeater">Water Heater</li>
+      <li *ngIf="previewData?.amenities?.plantSecurity">Plant Security</li>
+      <li *ngIf="previewData?.amenities?.laundryService">Laundry Service</li>
+      <li *ngIf="previewData?.amenities?.elevator">Elevator </li>
+      <li *ngIf="previewData?.amenities?.clubHouse">Club House </li>
+  
+    </ul>
+  
+  </div>
+   -->
+   <div class="modal-overlay d-flex align-items-center justify-content-center">
+    <div class="modal-content p-4">
+      <!-- <button class="close-btn btn-close" (click)="closePreview.emit()" aria-label="Close"></button> -->
+  
+      <h3 class="mb-3">Preview Property</h3>
+      <div class="property-details overflow-auto" style="max-height: 70vh;">
+        <p><strong>Apartment Name:</strong> {{ previewData?.apartmentName }}</p>
+        <p><strong>Type:</strong> {{ previewData?.apartmentType }}</p>
+        <p><strong>Location:</strong> {{ previewData?.location }}</p>
+        <p><strong>Square Feet:</strong> {{ previewData?.squareFeet }}</p>
+        <p><strong>Lease Type:</strong> {{ previewData?.leaseType }}</p>
+        <p><strong>Expected Rent:</strong> {{ previewData?.expectedRent | currency }}</p>
+        <p><strong>Furnished:</strong> {{ previewData?.furnished }}</p>
+        <p><strong>Description:</strong> {{ previewData?.description?.text }}</p>
+  
+        <h4 class="mt-4">Amenities</h4>
+        <ul class="list-unstyled">
+          <li *ngIf="previewData?.amenities?.gym">Gym</li>
+          <li *ngIf="previewData?.amenities?.swimmingPool">Swimming Pool</li>
+          <li *ngIf="previewData?.amenities?.carPark">Car Parking</li>
+          <li *ngIf="previewData?.amenities?.visitorsParking">Visitors Parking</li>
+          <li *ngIf="previewData?.amenities?.powerBackup">Power Backup</li>
+          <li *ngIf="previewData?.amenities?.garbageDisposal">Garbage Disposal</li>
+          <li *ngIf="previewData?.amenities?.privateLawn">Private Lawn</li>
+          <li *ngIf="previewData?.amenities?.waterHeater">Water Heater</li>
+          <li *ngIf="previewData?.amenities?.plantSecurity">Plant Security</li>
+          <li *ngIf="previewData?.amenities?.laundryService">Laundry Service</li>
+          <li *ngIf="previewData?.amenities?.elevator">Elevator</li>
+          <li *ngIf="previewData?.amenities?.clubHouse">Club House</li>
+        </ul>
+      </div>
+  
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>

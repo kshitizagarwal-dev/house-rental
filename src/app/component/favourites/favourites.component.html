@@ -1,42 +1,52 @@
-<div class="favorite-properties-container">
-   
-      <!-- Header / Navigation Bar -->
-      <header>
-        <div class="logo">Your Favorites Listings</div>
-        <nav>
-          <a href="/dashboard">Home</a>
-        </nav>
-      </header>
-    <!-- Loading indicator -->
-    <div *ngIf="isLoading">Loading your favorites...</div>
-  
-    <!-- No favorites message -->
-    <div *ngIf="!isLoading && favoritesDetails.length === 0">
-      <p>No favorite properties found.</p>
+<div class="favorite-properties-container container mt-4">
+  <!-- Header / Navigation Bar -->
+  <header class="mb-4">
+    <div class="logo">Your Favorite Listings</div>
+    <nav>
+      <a href="/dashboard">Home</a>
+    </nav>
+  </header>
+
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="text-center">
+    <p>Loading your favorites...</p>
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
-    
-    <!-- Display properties in cards -->
-    <div *ngIf="!isLoading && favoritesDetails.length > 0">
-      <div class="property-card" *ngFor="let property of favoritesDetails">
-        <!-- Check if imageUrls is defined and has at least one image -->
-        <img *ngIf="property.imageUrls && property.imageUrls.length > 0" 
-             [src]="property.imageUrls[0]" 
-             alt="Property Image" 
-             class="property-image" />
-  
-        <!-- Placeholder image if no imageUrls are available -->
-        <img *ngIf="!property.imageUrls || property.imageUrls.length === 0" 
-             src="path/to/placeholder-image.jpg" 
-             alt="No Image Available" 
-             class="property-image" />
-  
-        <div class="property-details">
-          <h3>{{ property.apartmentName }}</h3>
-          <p>{{ property.description?.title }}</p>
+  </div>
+
+  <!-- No favorites message -->
+  <div *ngIf="!isLoading && favoritesDetails.length === 0" class="text-center">
+    <p>No favorite properties found.</p>
+  </div>
+
+  <!-- Display properties in Bootstrap cards -->
+  <div *ngIf="!isLoading && favoritesDetails.length > 0" class="row">
+    <div class="col-md-4" *ngFor="let property of favoritesDetails">
+      <div class="card mb-4 shadow-sm">
+        
+        <!-- Image section with getPropertyImage method -->
+        <section class="property-image-container">
+          <img 
+               [src]="getPropertyImage(property.postID)" 
+               alt="Property Image" 
+               class="card-img-top property-image" />
+        </section>
+
+        <!-- Property details section -->
+        <div class="card-body">
+          <h5 class="card-title">{{ property.apartmentName }}</h5>
+          <p class="card-text">{{ property.description?.title }}</p>
           <p><strong>Location:</strong> {{ property.location }}</p>
           <p><strong>Rent:</strong> {{ property.expectedRent | currency }}</p>
+          
+          <!-- Action buttons -->
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-outline-primary me-2" (click)="viewDetailsRedirect(property.postID)">View Details</button>
+            <button class="btn btn-outline-danger">Remove from Favorites</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
